@@ -1,0 +1,11 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and fill in your values
+
+omada_host     = "https://192.168.1.1:8043"
+omada_username = "admin"
+omada_password = "your-password-here"
+omada_site     = "Default"
+
+wifi_corporate_password = "SecureCorpPassword123!"
+wifi_guest_password     = "GuestPass2024"
+wifi_iot_password       = "IoTSecure456!"

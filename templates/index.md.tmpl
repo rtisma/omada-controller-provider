@@ -1,0 +1,71 @@
+---
+page_title: "Provider: Omada"
+description: |-
+  The Omada provider is used to interact with TP-Link Omada Controller for managing network infrastructure.
+---
+
+# Omada Provider
+
+The Omada provider enables you to manage your TP-Link Omada Controller infrastructure as code. This provider supports Omada Controller 5.x and allows you to manage networks, WiFi configurations, DHCP reservations, and devices.
+
+Use the navigation to the left to read about the available resources and data sources.
+
+## Example Usage
+
+{{tffile "examples/provider/provider.tf"}}
+
+## Authentication
+
+The provider uses username and password authentication with automatic session management. Sessions are maintained for approximately 14 days and are automatically refreshed when they expire.
+
+### Provider Configuration
+
+The following arguments are supported in the `provider` block:
+
+## Schema
+
+### Required
+
+- `host` (String) The URL of your Omada Controller (e.g., `https://192.168.1.1:8043`)
+- `username` (String) Admin username for authentication
+- `password` (String, Sensitive) Admin password for authentication
+
+### Optional
+
+- `site_id` (String) The site name to manage. Defaults to `"Default"`
+- `insecure` (Boolean) Skip TLS certificate verification. Useful for self-signed certificates. Defaults to `false`
+
+## Supported Omada Controller Versions
+
+This provider is designed for:
+- TP-Link Omada Controller 5.11+
+- TP-Link Omada Controller 5.12+
+- API version 2 (`/api/v2/` endpoints)
+
+## Features
+
+- **Network Management**: Create and manage VLANs and networks with DHCP configuration
+- **WiFi Configuration**: Configure SSIDs with various security modes and VLAN assignments
+- **DHCP Management**: Static IP reservations by MAC address
+- **Device Management**: Configure and adopt Omada devices (APs, switches, gateways)
+
+## Getting Started
+
+1. Ensure you have access to an Omada Controller 5.x instance
+2. Configure the provider with your controller details
+3. Start managing your infrastructure with Terraform
+
+For detailed examples, see the [examples directory](https://github.com/home-sol/terraform-provider-omada/tree/main/examples).
+
+## Important Notes
+
+- Never commit credentials to source control
+- Use Terraform variables or environment variables for sensitive data
+- Enable `insecure = true` only for development/testing with self-signed certificates
+- Sessions are automatically refreshed on expiry
+
+## Support
+
+For issues, questions, or contributions:
+- GitHub Issues: https://github.com/home-sol/terraform-provider-omada/issues
+- Documentation: https://github.com/home-sol/terraform-provider-omada/tree/main/docs
